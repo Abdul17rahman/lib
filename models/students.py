@@ -4,7 +4,7 @@
 
 from sqlalchemy.orm import relationship
 from sqlalchemy import Integer, String, Column
-from base import Base
+from models.base import Base
 
 
 class Student(Base):
