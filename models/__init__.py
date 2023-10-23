@@ -1,2 +1,2 @@
-# models/__init__.py
-# This file can be empty
+# models.__init__.py
+# This is an empty file

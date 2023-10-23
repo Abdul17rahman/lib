@@ -16,10 +16,10 @@ class Book(Base):
     """
     __tablename__ = 'books'
     id = Column(Integer, primary_key=True, autoincrement=True)
-    title = Column(String(20), nullable=False)
-    author = Column(String(20), nullable=False)
-    status = Column(String(10))
-    student_id = Column(Integer, ForeignKey('students.id'))
+    title = Column(String(100), nullable=False)
+    author = Column(String(30), nullable=False)
+    status = Column(String(10), default='Available')
+    taken_by = Column(Integer, ForeignKey('students.id'))
     student = relationship('Student', back_populates='books')
     reviews = relationship('Review', back_populates='book')
 

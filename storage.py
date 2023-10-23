@@ -26,11 +26,31 @@ class DbStorage:
         Base.metadata.create_all(self.engine)
         self.Session = sessionmaker(bind=self.engine)
 
+    def all(self, cls_name):
+        """
+        Returns data from the database
+        """
+        session = self.Session()
+        return session.query(cls_name).all()
+
+    def new(self, cls_name, **values):
+        """
+        This method adds data to the database.
+        """
+        session = self.Session()
+        data = cls_name(**values)
+        session.add(data)
+        session.commit()
+
+    def close_connection(self):
+        session = self.Session()
+        session.close()
+
+"""
 if __name__ == '__main__':
     # Add Students
     db_storage = DbStorage()
     session = db_storage.Session()
-
     students = [
         {
             'fname' : 'Birungi',
@@ -59,3 +79,6 @@ if __name__ == '__main__':
         session.add(new_student)
         session.commit()
     print("Students successfully added")
+    db_storage.new(Book, title='Master Java', author='Colt Steel')
+    print("Book Added")
+"""
