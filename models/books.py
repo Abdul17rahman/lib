@@ -16,7 +16,7 @@ class Book(Base):
     """
     __tablename__ = 'books'
     id = Column(Integer, primary_key=True, autoincrement=True)
-    title = Column(String(100), nullable=False)
+    title = Column(String(100), nullable=False, unique=True)
     author = Column(String(30), nullable=False)
     status = Column(String(10), default='Available')
     taken_by = Column(Integer, ForeignKey('students.id'))

@@ -17,8 +17,8 @@ class Review(Base):
     __tablename__ = 'reviews'
     id = Column(Integer, primary_key=True, autoincrement=True)
     text = Column(String(250), nullable=False)
-    book_id = Column(Integer, ForeignKey('books.id'))
-    student_id = Column(Integer, ForeignKey('students.id'))
+    book_id = Column(Integer, ForeignKey('books.id'), nullable=False)
+    student_id = Column(Integer, ForeignKey('students.id'), nullable=False)
     book = relationship('Book', back_populates='reviews')
     student = relationship('Student', back_populates='reviews')
 
